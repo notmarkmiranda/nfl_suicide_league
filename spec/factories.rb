@@ -6,4 +6,8 @@ FactoryBot.define do
     phone_number "3104047644"
     password "password"
   end
+
+  factory :league do
+    sequence :name { |x| "league number #{x}" }
+  end
 end

@@ -28,7 +28,7 @@ describe 'User can log in and out', type: :system do
     fill_in 'Password', with: 'passwordx'
     click_button 'Log In!'
 
-    expect(current_path).to eq(log_in_path)
+    expect(page).to have_button('Log In!')
   end
 
   scenario 'does not allow user to log in with bad password' do
@@ -38,6 +38,6 @@ describe 'User can log in and out', type: :system do
     fill_in 'Password', with: 'password'
     click_button 'Log In!'
 
-    expect(current_path).to eq(log_in_path)
+    expect(page).to have_button('Log In!')
   end
 end
