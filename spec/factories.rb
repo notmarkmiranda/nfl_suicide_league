@@ -1,7 +1,21 @@
 FactoryBot.define do
-  factory :team do
-    abbreviation "MyString"
+  factory :game do
+    date "2017-11-07"
+    start_time "14:41:15"
+    home_id 1
+    away_id 1
+    h_score 1
+    a_score 1
+    week 1
+    completed false
+    season
   end
+
+  factory :team do
+    sequence :abbreviation { |x| "DEN#{x}" }
+    sequence :name { |x| "Broncos #{x}" }
+  end
+
   factory :user_league do
     user
     league
