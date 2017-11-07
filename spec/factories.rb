@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :user_league do
+    user
+    league
+    role 0
+  end
+
   factory :user do
     sequence :email_address { |x| "test#{x}@example.com" }
     first_name "Test"

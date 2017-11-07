@@ -4,6 +4,9 @@ class League < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :slug, presence: true, uniqueness: true
 
+  has_many :user_leagues
+  has_many :users, through: :user_leagues
+
   before_validation :set_slug
 
   def self.find_by_slug(slug)
