@@ -1,7 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+week_2 = WeeklyScheduleService.new(season: 2017, type: 'REG', week: 2)
+
+week_2.parsed_xml.each do |g|
+  team_1 = Team.find_or_create_by(abbreviation: g[:h], name: g[:hnn])
+  team_2 = Team.find_or_create_by(abbreviation: g[:v], name: g[:vnn])
+  puts "#{team_1.name.capitalize}!"
+  puts "#{team_2.name.capitalize}!"
+end
+
+puts "All #{Team.count} teams created in the database!"
+
+
+puts "Importing 2017 Season"
+
