@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20171107033338) do
   create_table "user_leagues", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "league_id"
-    t.integer "role"
+    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["league_id"], name: "index_user_leagues_on_league_id"
