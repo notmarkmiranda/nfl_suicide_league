@@ -16,4 +16,8 @@ FactoryBot.define do
   factory :league do
     sequence :name { |x| "league number #{x}" }
   end
+
+  factory :season do
+    sequence :year { |x| (2000 + x).to_s }
+  end
 end
