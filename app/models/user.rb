@@ -5,4 +5,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :phone_number, uniqueness: true
+
+  has_many :user_leagues
+  has_many :leagues, through: :user_leagues
 end
