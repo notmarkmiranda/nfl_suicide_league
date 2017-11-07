@@ -19,6 +19,8 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.0'
   gem 'pry'
   gem 'rspec-rails', '~> 3.7.0'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

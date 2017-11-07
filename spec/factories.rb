@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :team do
+    abbreviation "MyString"
+  end
   factory :user_league do
     user
     league
