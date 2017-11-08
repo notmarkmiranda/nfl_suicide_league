@@ -37,4 +37,11 @@ FactoryBot.define do
   factory :season do
     sequence :year { |x| (2000 + x).to_s }
   end
+
+  factory :week do
+    season
+    sequence :number { |x| 1 + x }
+    start_date "2017-11-05"
+    end_date "2017-11-08"
+  end
 end

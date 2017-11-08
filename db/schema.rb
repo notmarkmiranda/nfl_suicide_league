@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107214115) do
+ActiveRecord::Schema.define(version: 20171108061432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 20171107214115) do
     t.integer "a_score"
     t.integer "week"
     t.boolean "completed"
-    t.bigint "season_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["season_id"], name: "index_games_on_season_id"
+    t.bigint "week_id"
+    t.index ["week_id"], name: "index_games_on_week_id"
   end
 
   create_table "leagues", force: :cascade do |t|
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20171107214115) do
     t.string "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: true
   end
 
   create_table "teams", force: :cascade do |t|
@@ -67,7 +68,17 @@ ActiveRecord::Schema.define(version: 20171107214115) do
     t.string "password_digest"
   end
 
-  add_foreign_key "games", "seasons"
+  create_table "weeks", force: :cascade do |t|
+    t.bigint "season_id"
+    t.integer "number"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["season_id"], name: "index_weeks_on_season_id"
+  end
+
   add_foreign_key "user_leagues", "leagues"
   add_foreign_key "user_leagues", "users"
+  add_foreign_key "weeks", "seasons"
 end
