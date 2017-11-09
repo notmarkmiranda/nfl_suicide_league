@@ -5,6 +5,7 @@ class UserLeague < ApplicationRecord
 
   belongs_to :user
   belongs_to :league
+  has_one :pick
 
   enum role: { user: 0, admin: 1, super: 2 }
 end

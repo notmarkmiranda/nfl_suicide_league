@@ -13,6 +13,7 @@ describe Game, type: :model do
     it { should belong_to :week }
     it { should belong_to :home_team }
     it { should belong_to :away_team }
+    it { should have_many :picks }
   end
 
   describe 'methods'

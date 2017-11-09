@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108061432) do
+ActiveRecord::Schema.define(version: 20171108214847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20171108061432) do
     t.integer "away_id"
     t.integer "h_score"
     t.integer "a_score"
-    t.integer "week"
     t.boolean "completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -34,6 +33,17 @@ ActiveRecord::Schema.define(version: 20171108061432) do
     t.string "slug"
     t.string "join_token"
     t.index ["join_token"], name: "index_leagues_on_join_token", unique: true
+  end
+
+  create_table "picks", force: :cascade do |t|
+    t.bigint "user_league_id"
+    t.bigint "team_id"
+    t.bigint "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_picks_on_game_id"
+    t.index ["team_id"], name: "index_picks_on_team_id"
+    t.index ["user_league_id"], name: "index_picks_on_user_league_id"
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -78,6 +88,9 @@ ActiveRecord::Schema.define(version: 20171108061432) do
     t.index ["season_id"], name: "index_weeks_on_season_id"
   end
 
+  add_foreign_key "picks", "games"
+  add_foreign_key "picks", "teams"
+  add_foreign_key "picks", "user_leagues"
   add_foreign_key "user_leagues", "leagues"
   add_foreign_key "user_leagues", "users"
   add_foreign_key "weeks", "seasons"

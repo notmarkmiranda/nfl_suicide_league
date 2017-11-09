@@ -1,14 +1,16 @@
 FactoryBot.define do
+  factory :pick do
+    user_league
+    team
+    game
+  end
+
   factory :game do
-    date "2017-11-07"
-    start_time "14:41:15"
-    home_id 1
-    away_id 1
-    h_score 1
-    a_score 1
-    week 1
+    start "14:41:15"
+    association :home_team, factory: :team
+    association :away_team, factory: :team
+    week
     completed false
-    season
   end
 
   factory :team do
@@ -26,7 +28,7 @@ FactoryBot.define do
     sequence :email_address { |x| "test#{x}@example.com" }
     first_name "Test"
     last_name "Example"
-    phone_number "3104047644"
+    sequence :phone_number { |x| (3104047644 + x).to_s }
     password "password"
   end
 

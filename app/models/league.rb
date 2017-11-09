@@ -9,6 +9,11 @@ class League < ApplicationRecord
 
   before_validation :set_slug
 
+  def grant_membership(user)
+    return if users.include?(user)
+    users << user
+  end
+
   def self.find_by_slug(slug)
     find_by(slug: slug)
   end

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root 'pages#show'
 
   resources :users, only: [:index, :create]
-  resources :leagues, only: [:index, :show, :new, :create], param: :slug
+  resources :leagues, only: [:index, :show, :new, :create], param: :slug do
+    resources :picks
+  end
 
   get '/sign-up', to: 'users#new', as: 'sign_up'
   get '/dashboard', to: 'users#show', as: 'dashboard'

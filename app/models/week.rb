@@ -5,6 +5,11 @@ class Week < ApplicationRecord
   validates :season_id, presence: true
 
   belongs_to :season
+  has_many :games
 
   default_scope { order(end_date: :asc) }
+
+  def formatted_week_ending
+    end_date.strftime('%B %-e, %Y')
+  end
 end

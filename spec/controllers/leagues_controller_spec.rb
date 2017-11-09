@@ -6,6 +6,7 @@ describe LeaguesController, type: :controller do
   describe 'GET#show' do
     it 'renders the show template' do
       league = create(:league)
+      create(:week)
       get :show, params: { slug: league.slug }
 
       expect(response).to render_template :show

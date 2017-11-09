@@ -1,1 +1,3 @@
 <%= @league.name %>
+
+<%= link_to "Make Week ##{@current_week.number} Pick", new_league_pick_path(@league) %>

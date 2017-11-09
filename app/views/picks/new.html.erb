@@ -1,0 +1,12 @@
+Week ending: <%= @week.formatted_week_ending %>
+
+<% @week.games.each do |game| %>
+  <p>
+    Away Team: <%= game.away_team.abbreviation %>
+    <%= button_to "Pick #{game.away_team.name.capitalize} to lose.", { controller: 'picks', action: 'create', pick: { team_id: game.away_team.id, game_id: game.id } }, method: :post %>
+  </p>
+  <p>
+    Home Team: <%= game.home_team.abbreviation %>
+    <%= button_to "Pick #{game.home_team.name.capitalize} to lose.", { controller: 'picks', action: 'create', pick: { team_id: game.home_team.id, game_id: game.id } }, method: :post %>
+  </p>
+<% end %>
