@@ -13,5 +13,11 @@ describe User, type: :model do
   end
 
   describe 'methods' do
+    context '#short_name' do
+      it 'returns the short name of a user' do
+        user = create(:user, first_name: 'mark', last_name: 'miranda')
+        expect(user.short_name).to eq('Mark M.')
+      end
+    end
   end
 end

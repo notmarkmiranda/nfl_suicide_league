@@ -30,6 +30,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'launchy'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', require: false

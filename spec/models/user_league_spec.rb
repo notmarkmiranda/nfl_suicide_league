@@ -14,6 +14,7 @@ describe UserLeague, type: :model do
   describe 'relationships' do
     it { should belong_to :user }
     it { should belong_to :league }
+    it { should have_one :pick }
   end
 
   describe 'methods' do

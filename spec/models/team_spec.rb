@@ -9,6 +9,9 @@ RSpec.describe Team, type: :model do
   end
 
   context 'relationships' do
+    it { should have_many :home_games }
+    it { should have_many :away_games }
+    it { should have_many :picks }
   end
 
   context 'methods' do

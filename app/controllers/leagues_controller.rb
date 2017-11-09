@@ -3,6 +3,7 @@ class LeaguesController < ApplicationController
 
   def show
     @league = League.find_by_slug(params[:slug])
+    @current_week = Season.current.current_week
   end
 
   def new
